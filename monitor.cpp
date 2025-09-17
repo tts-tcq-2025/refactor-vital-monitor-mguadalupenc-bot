@@ -14,12 +14,16 @@ void alertBlink_print() {
     }
 }
 
+// Función que chequea si un valor está fuera del rango [min, max]
+bool isOutOfRange(float value, float min, float max) {
+    return (value < min || value > max);
+}
 int vitalsOk(float temperature, float pulseRate, float spo2) {
-  if (temperature > 102 || temperature < 95) {
+  if (isOutOfRange ( temperature ,95,102)) {
     cout << "Temperature is critical!\n";
     alertBlink_print()
     return 0;
-  } else if (pulseRate < 60 || pulseRate > 100) {
+  } else if (isOutOfRange ( pulseRate, 60, 100)) {
     cout << "Pulse Rate is out of range!\n";
     alertBlink_print()
     return 0;
